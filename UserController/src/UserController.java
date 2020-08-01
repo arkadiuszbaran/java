@@ -1,4 +1,4 @@
-//zad. 23
+//zad. 24
 public class UserController {
     public static void main(String[] args) {
         User user = new User("Jan", "Kowalski");

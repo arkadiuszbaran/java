@@ -1,4 +1,4 @@
-//zad. 23
+//zad. 24
 public class User {
     private String firstName;
     private String lastName;
