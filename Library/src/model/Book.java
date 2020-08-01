@@ -2,6 +2,8 @@
 //zad. 18
 //zad. 20
 //zad. 22
+//zad. 26
+
 package model;
 
 public class Book {
@@ -77,7 +79,9 @@ public class Book {
 
     public void printInfo() {
         String info = title + "; " + author + "; " + release + "; "
-                + pages + "; " + publisher + "; " + isbn;
+                + pages + "; " + publisher;
+        if (isbn != null)
+            info += "; " + isbn;
         System.out.println(info);
     }
 }
