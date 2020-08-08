@@ -4,6 +4,7 @@
 //zad. 22
 //zad. 26
 //zad. 45
+//zad. 47
 
 package model;
 
@@ -14,9 +15,7 @@ public class Book extends Publication {
 
     public Book(String title, String author, int year, int pages,
                 String publisher, String isbn) {
-        setTitle(title);
-        setPublisher(publisher);
-        setYear(year);
+        super(year, title, publisher);
         this.pages = pages;
         this.author = author;
         this.isbn = isbn;
