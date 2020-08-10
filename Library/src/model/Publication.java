@@ -1,5 +1,6 @@
 //zad. 45
 //zad. 47
+//zad. 49
 
 package model;
 
@@ -36,5 +37,9 @@ public class Publication {
 
     void setPublisher(String publisher) {
         this.publisher = publisher;
+    }
+
+    public void printInfo(){
+
     }
 }
