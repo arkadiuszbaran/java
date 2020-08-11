@@ -1,8 +1,11 @@
 //zad. 45
 //zad. 47
 //zad. 49
+//zad. 51
 
 package model;
+
+import java.util.Objects;
 
 public class Publication {
     private int year;
@@ -39,7 +42,23 @@ public class Publication {
         this.publisher = publisher;
     }
 
-    public void printInfo(){
+    @Override
+    public String toString() {
+        return title + " " + publisher + " " + year;
+    }
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Publication that = (Publication) o;
+        return year == that.year &&
+                title.equals(that.title) &&
+                publisher.equals(that.publisher);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(year, title, publisher);
     }
 }
