@@ -9,6 +9,7 @@
 //zad. 45
 //zad. 49
 //zad. 51
+//zad. 56
 
 package model;
 
@@ -64,5 +65,15 @@ public class Library {
         if (countMagazines == 0) {
             System.out.println("Brak książek w bibliotece");
         }
+    }
+
+    @Override
+    public String toString() {
+        StringBuilder builder = new StringBuilder();
+        for (int i = 0; i < publicationsNumber; i++) {
+            builder.append(publications[i]);
+            builder.append("\n");
+        }
+        return builder.toString();
     }
 }
