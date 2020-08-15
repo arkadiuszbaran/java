@@ -1,0 +1,6 @@
+//zad. 58
+public class NoMoreSpaceException extends Exception {
+    public NoMoreSpaceException(String message) {
+        super(message);
+    }
+}
