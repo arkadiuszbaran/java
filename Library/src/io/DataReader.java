@@ -1,6 +1,7 @@
 //zad. 33
 //zad. 38
 //zad. 45
+//zad. 60
 
 package io;
 
@@ -11,15 +12,22 @@ import java.util.Scanner;
 
 public class DataReader {
     private Scanner sc = new Scanner(System.in);
+    private ConsolePrinter printer;
+
+    public DataReader(ConsolePrinter printer) {
+        this.printer = printer;
+    }
 
     public void close() {
         sc.close();
     }
 
     public int getInt() {
-        int number = sc.nextInt();
-        sc.nextLine();
-        return number;
+        try {
+            return sc.nextInt();
+        } finally {
+            sc.nextLine();
+        }
     }
 
     public Book readAndCreateBook() {
