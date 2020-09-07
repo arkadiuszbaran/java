@@ -2,6 +2,7 @@
 //zad. 38
 //zad. 45
 //zad. 60
+//zad. 67
 
 package io;
 
@@ -28,6 +29,10 @@ public class DataReader {
         } finally {
             sc.nextLine();
         }
+    }
+
+    public String getString() {
+        return sc.nextLine();
     }
 
     public Book readAndCreateBook() {

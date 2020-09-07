@@ -1,13 +1,12 @@
 /* zad. 9, zad. 14, zad. 18, zad. 20, zad. 30,
 zad. 33, zad. 38, zad. 40, zad. 45, zad. 49,
-zad. 51, zad. 56, zad. 60 */
+zad. 51, zad. 56, zad. 60, zad. 67 */
 
 package model;
 
-import io.DataReader;
-import model.Book;
+import java.io.Serializable;
 
-public class Library {
+public class Library implements Serializable {
 
     private static final int MAX_PUBLICATIONS = 2000;
     private int publicationsNumber;

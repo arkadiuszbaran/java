@@ -6,9 +6,13 @@
 
 package app;
 
+import exception.DataExportException;
+import exception.DataImportException;
 import exception.NoSuchOptionException;
 import io.ConsolePrinter;
 import io.DataReader;
+import io.file.FileManager;
+import io.file.FileManagerBuilder;
 import model.Book;
 import model.Library;
 import model.Magazine;
@@ -17,11 +21,23 @@ import model.Publication;
 import java.util.InputMismatchException;
 
 public class LibraryControl {
-
     private ConsolePrinter printer = new ConsolePrinter();
     private DataReader dataReader = new DataReader(printer);
+    private FileManager fileManager;
 
-    private Library library = new Library();
+    private Library library;
+
+    LibraryControl() {
+        fileManager = new FileManagerBuilder(printer, dataReader).build();
+        try {
+            library = fileManager.importData();
+            printer.printLine("Zaimportowane dane z pliku");
+        } catch (DataImportException e) {
+            printer.printLine(e.getMessage());
+            printer.printLine("Zainicjowano nową bazę.");
+            library = new Library();
+        }
+    }
 
     void controlLoop() {
         Option option;
@@ -67,11 +83,10 @@ public class LibraryControl {
     }
 
     private void printOptions() {
-        System.out.println("Wybierz opcję: ");
+        printer.printLine("Wybierz opcję: ");
         for (Option option : Option.values()) {
             printer.printLine(option.toString());
         }
-
     }
 
     private void addBook() {
@@ -81,7 +96,7 @@ public class LibraryControl {
         } catch (InputMismatchException e) {
             printer.printLine("Nie udało się utworzyć książki, niepoprawne dane");
         } catch (ArrayIndexOutOfBoundsException e) {
-            printer.printLine("Osiągnięto limit pojemności, nie można dodać kolejnego magazynu");
+            printer.printLine("Osiągnięto limit pojemności, nie można dodać kolejnej książki");
         }
     }
 
