@@ -6,12 +6,15 @@
 //zad. 45
 //zad. 47
 //zad. 51
+//zad. 68
 
 package model;
 
 import java.util.Objects;
 
 public class Book extends Publication {
+    public static final String TYPE = "Książka";
+
     private String author;
     private int pages;
     private String isbn;
@@ -67,5 +70,16 @@ public class Book extends Publication {
     @Override
     public int hashCode() {
         return Objects.hash(super.hashCode(), author, pages, isbn);
+    }
+
+    @Override
+    public String toCsv() {
+        return (TYPE + ";") +
+                getTitle() + ";" +
+                getPublisher() + ";" +
+                getYear() + ";" +
+                author + ";" +
+                pages + ";" +
+                isbn + "";
     }
 }

@@ -1,4 +1,5 @@
 //zad. 67
+//zad. 68
 
 package io.file;
 
@@ -15,10 +16,12 @@ public class FileManagerBuilder {
         this.reader = reader;
     }
 
-    public FileManager build() throws NoSuchFileTypeException {
+    public FileManager build() {
         printer.printLine("Wybierz format danych:");
         FileType fileType = getFileType();
         switch (fileType) {
+            case CSV:
+                return new CsvFileManager();
             case SERIAL:
                 return new SerializableFileManager();
             default:

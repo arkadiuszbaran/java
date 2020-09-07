@@ -4,6 +4,7 @@
 //zad. 51
 //zad. 62
 //zad. 67
+//zad. 68
 
 package model;
 
@@ -44,6 +45,8 @@ public abstract class Publication implements Serializable {
     void setPublisher(String publisher) {
         this.publisher = publisher;
     }
+
+    public abstract String toCsv();
 
     @Override
     public String toString() {
