@@ -1,4 +1,5 @@
 //zad. 60
+
 package io;
 
 import model.Book;
@@ -35,4 +36,3 @@ public class ConsolePrinter {
         System.out.println(text);
     }
 }
-

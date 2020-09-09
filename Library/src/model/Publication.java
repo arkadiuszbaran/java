@@ -12,14 +12,14 @@ import java.io.Serializable;
 import java.util.Objects;
 
 public abstract class Publication implements Serializable {
-    private int year;
     private String title;
     private String publisher;
+    private int year;
 
-    Publication(int year, String title, String publisher) {
-        this.year = year;
+    Publication(String title, String publisher, int year) {
         this.title = title;
         this.publisher = publisher;
+        this.year = year;
     }
 
     int getYear() {
@@ -50,7 +50,7 @@ public abstract class Publication implements Serializable {
 
     @Override
     public String toString() {
-        return title + " " + publisher + " " + year;
+        return title + ", " + publisher + ", " + year;
     }
 
     @Override
@@ -59,12 +59,12 @@ public abstract class Publication implements Serializable {
         if (o == null || getClass() != o.getClass()) return false;
         Publication that = (Publication) o;
         return year == that.year &&
-                title.equals(that.title) &&
-                publisher.equals(that.publisher);
+                Objects.equals(title, that.title) &&
+                Objects.equals(publisher, that.publisher);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(year, title, publisher);
+        return Objects.hash(title, publisher, year);
     }
 }

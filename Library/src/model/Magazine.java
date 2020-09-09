@@ -14,11 +14,11 @@ public class Magazine extends Publication {
     private int day;
     private String language;
 
-    public Magazine(String title, String publisher, int year, int month, int day, String language) {
-        super(year, title, publisher);
+    public Magazine(String title, String publisher, String language, int year, int month, int day) {
+        super(title, publisher, year);
+        this.language = language;
         this.month = month;
         this.day = day;
-        this.language = language;
     }
 
     public int getMonth() {
@@ -46,27 +46,6 @@ public class Magazine extends Publication {
     }
 
     @Override
-    public String toString() {
-        return super.toString() + ", " + month + ", " + day + ", " + language;
-    }
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        if (!super.equals(o)) return false;
-        Magazine magazine = (Magazine) o;
-        return month == magazine.month &&
-                day == magazine.day &&
-                language.equals(magazine.language);
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(super.hashCode(), month, day, language);
-    }
-
-    @Override
     public String toCsv() {
         return (TYPE + ";") +
                 getTitle() + ";" +
@@ -77,4 +56,24 @@ public class Magazine extends Publication {
                 language + "";
     }
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        if (!super.equals(o)) return false;
+        Magazine magazine = (Magazine) o;
+        return month == magazine.month &&
+                day == magazine.day &&
+                Objects.equals(language, magazine.language);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(super.hashCode(), month, day, language);
+    }
+
+    @Override
+    public String toString() {
+        return super.toString() + ", " + month + ", " + day + ", " + language;
+    }
 }
