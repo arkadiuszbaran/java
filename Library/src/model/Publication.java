@@ -5,13 +5,14 @@
 //zad. 62
 //zad. 67
 //zad. 68
+//zad. 76
 
 package model;
 
 import java.io.Serializable;
 import java.util.Objects;
 
-public abstract class Publication implements Serializable {
+public abstract class Publication implements Serializable, Comparable<Publication> {
     private String title;
     private String publisher;
     private int year;
@@ -66,5 +67,10 @@ public abstract class Publication implements Serializable {
     @Override
     public int hashCode() {
         return Objects.hash(title, publisher, year);
+    }
+
+    @Override
+    public int compareTo(Publication p) {
+        return title.compareToIgnoreCase(p.title);
     }
 }

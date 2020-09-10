@@ -5,6 +5,7 @@
 //zad. 65
 //zad. 68
 //zad. 73
+//zad. 76
 
 package app;
 
@@ -20,7 +21,9 @@ import model.Book;
 import model.Library;
 import model.Magazine;
 import model.Publication;
+import model.comparator.AlphabeticalTitleComparator;
 
+import java.util.Arrays;
 import java.util.InputMismatchException;
 
 class LibraryControl {
@@ -111,11 +114,6 @@ class LibraryControl {
         }
     }
 
-    private void printBooks() {
-        Publication[] publications = library.getPublications();
-        printer.printBooks(publications);
-    }
-
     private void addMagazine() {
         try {
             Magazine magazine = dataReader.readAndCreateMagazine();
@@ -127,9 +125,20 @@ class LibraryControl {
         }
     }
 
+    private void printBooks() {
+        Publication[] publications = getSortedPublications();
+        printer.printBooks(publications);
+    }
+
     private void printMagazines() {
-        Publication[] publications = library.getPublications();
+        Publication[] publications = getSortedPublications();
         printer.printMagazines(publications);
+    }
+
+    private Publication[] getSortedPublications() {
+        Publication[] publications = library.getPublications();
+        Arrays.sort(publications, new AlphabeticalTitleComparator());
+        return publications;
     }
 
     private void deleteMagazine() {
