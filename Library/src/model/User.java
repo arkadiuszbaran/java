@@ -1,11 +1,12 @@
 //zad. 80
+//zad. 81
 
 package model;
 
 import java.io.Serializable;
 import java.util.Objects;
 
-public abstract class User implements Serializable {
+public abstract class User implements Serializable, CsvConvertible {
     private String firstName;
     private String lastName;
     private String pesel;
@@ -54,6 +55,4 @@ public abstract class User implements Serializable {
     public String toString() {
         return firstName + " " + lastName + " - " + pesel;
     }
-
-    public abstract String toCsv();
 }
