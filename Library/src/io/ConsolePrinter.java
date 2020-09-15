@@ -1,4 +1,5 @@
 //zad. 60
+//zad. 80
 
 package io;
 
@@ -6,12 +7,11 @@ import model.Book;
 import model.Magazine;
 import model.Publication;
 
-
 public class ConsolePrinter {
-    public void printBooks(Publication[] publications) {
+    public void printBooks(Collection<Publication> publications) {
         int counter = 0;
         for (Publication publication : publications) {
-            if (publication instanceof Book) {
+            if(publication instanceof Book) {
                 printLine(publication.toString());
                 counter++;
             }
@@ -20,16 +20,22 @@ public class ConsolePrinter {
             printLine("Brak książek w bibliotece");
     }
 
-    public void printMagazines(Publication[] publications) {
+    public void printMagazines(Collection<Publication> publications) {
         int counter = 0;
         for (Publication publication : publications) {
-            if (publication instanceof Magazine) {
+            if(publication instanceof Magazine) {
                 printLine(publication.toString());
                 counter++;
             }
         }
         if (counter == 0)
             printLine("Brak magazynów w bibliotece");
+    }
+
+    public void printUsers(Collection<LibraryUser> users) {
+        for (LibraryUser user : users) {
+            printLine(user.toString());
+        }
     }
 
     public void printLine(String text) {

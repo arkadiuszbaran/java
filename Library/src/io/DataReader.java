@@ -3,10 +3,12 @@
 //zad. 45
 //zad. 60
 //zad. 67
+//zad. 80
 
 package io;
 
 import model.Book;
+import model.LibraryUser;
 import model.Magazine;
 
 import java.util.Scanner;
@@ -67,5 +69,15 @@ public class DataReader {
         int day = getInt();
 
         return new Magazine(title, publisher, language, year, month, day);
+    }
+
+    public LibraryUser createLibraryUser() {
+        printer.printLine("Imię");
+        String firstName = sc.nextLine();
+        printer.printLine("Nazwisko");
+        String lastName = sc.nextLine();
+        printer.printLine("Pesel");
+        String pesel = sc.nextLine();
+        return new LibraryUser(firstName, lastName, pesel);
     }
 }
